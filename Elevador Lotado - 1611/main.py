@@ -1,19 +1,15 @@
-casos = int(input())
-
-for _ in range(casos):
-    ultimoAndar, porVez, pessoas = map(int, input().split())
-    andares = list(map(int, input().split()))
-
-    andares.sort()
-
-    # print(andares)
+casosTeste = int(input())
+energia = 0
+andarPessoas = []
+pessoas = []
+for i in range(casosTeste):
+    total_andares, capacidade, pessoas = map(int, input().split())
     
-    maximoEnergia = 0
-    while len(andares):
-        vez = []
-        while len(vez) < porVez and len(andares) > 0:
-            vez.append(andares.pop())
-        # print(vez)
-        maior = max(vez)
-        maximoEnergia += maior * 2
-    print(maximoEnergia)
+    andares = [int(valor) for valor in input().split()[:pessoas]]
+   
+    andares.sort(reverse=True)
+    
+    for j in range(0, len(andares), capacidade):
+        energia += 2 * andares[j]
+        
+    print(energia)
